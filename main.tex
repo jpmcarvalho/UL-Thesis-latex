@@ -1,0 +1,105 @@
+\documentclass[11pt]{report}
+\usepackage[pages=some]{background} % package for background
+%\usepackage{background} % package for background
+\usepackage{graphicx} % package for images
+\usepackage{fontspec} % package for fonts
+\usepackage{helvet} % package for font 'Helvetica'
+\usepackage{color} % package for colors
+\usepackage{soul} % package for text highlighting
+\usepackage{fancyhdr} % package for header and footer formatting
+\usepackage{titlesec} % package for chapter name formatting
+\usepackage{hyperref} % package for hyperlinks
+\usepackage{imakeidx} % package for indices
+\usepackage[backend=biber,style=alphabetic,sorting=none]{biblatex} % package for bibliography
+\usepackage[toc]{glossaries} % package for glossaries
+\usepackage{tocbibind} % package for toc listing
+\usepackage[a4paper, top=2.5cm, bottom=2.5cm, left=3cm, right=3cm]{geometry} % sets page size and margins
+\graphicspath{{/images}} % sets images folder
+%\RequirePackage{ul-version}
+\usepackage{ul-version}
+
+% home background settings
+\backgroundsetup{
+    scale=1,
+    opacity=1,
+    angle=0,
+    position=current page.center,
+    contents={\includegraphics[width=\paperwidth,height=\paperheight]{images/home_background}}
+    %pages=some
+}
+
+% hyperlinks setup
+\hypersetup{
+    linktoc=all,
+    colorlinks = true,
+    linkcolor={black!50!black},
+    citecolor={black!50!black},
+    urlcolor={black!80!black}
+}
+
+% chapter name formatting
+\titleformat{\chapter}[display]{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+% adjusts spacing between header and text
+\titlespacing*{\chapter}{0pt}{0pt}{20pt}
+
+% header and footer settings
+\setlength{\headheight}{18pt} % adjusts head height for header compatibility
+\addtolength{\topmargin}{-4.4pt} % adjusts top margin to compensate for change
+\fancypagestyle{plain}{
+    \pagestyle{fancy}
+    \fancyhf{}
+    \fancyhead[L]{\large{\textit{Título do Trabalho Final de Curso}}} % sets header
+    \fancyfoot[R]{\rule{\textwidth}{0.4pt}\\\thepage}
+}
+
+% indice settings
+\makeindex
+\renewcommand{\contentsname}{Índice} % updates name of the indice page
+
+% bibliography settings
+\addbibresource{bibliography.bib}
+
+% glossary entries
+\newacronym{lei}{LEI}{Licenciatura em Engenharia Informática}
+\newacronym{tfc}{TFC}{Trabalho Final de Curso}
+\makeglossaries
+
+% lists settings
+\renewcommand{\listfigurename}{Lista de Figuras}
+\renewcommand{\listtablename}{Lista de Tabelas}
+
+% font settings
+\renewcommand{\familydefault}{\sfdefault} % sets default font family}
+\setsansfont{Arial}
+
+
+% document settings
+\title{TFC}
+\author{Author}
+\date{September 2023}
+
+
+\begin{document}
+	
+    \input{cover}
+    \input{copyright}
+    \input{summary}
+    \input{abstract}
+
+    % indice
+    \begin{tableofcontents}
+        \printindex
+    \end{tableofcontents}
+    
+    
+
+    \listoffigures
+    \listoftables
+    \input{chapters/problem_description}
+    \input{chapters/benchmarking}
+    \input{chapters/viability}
+    \input{chapters/proposed_solution}
+    \input{chapters/calendar}
+    \printbibliography[heading=bibintoc,title={Bibliografia}]
+    \printglossary[title=Glossário,toctitle=Glossário]
+\end{document}

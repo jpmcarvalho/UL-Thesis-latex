@@ -16,6 +16,7 @@
 \usepackage[a4paper, top=2.5cm, bottom=2.5cm, left=3cm, right=3cm]{geometry} % sets page size and margins
 \graphicspath{{/images}} % sets images folder
 %\RequirePackage{ul-version}
+\usepackage{titlesec}
 \usepackage{ul-version}
 
 % home background settings
@@ -38,8 +39,8 @@
 }
 
 % chapter name formatting
-\titleformat{\chapter}[display]{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
-% adjusts spacing between header and text
+\titleformat{\chapter}[hang]
+{\normalfont\huge\bfseries}{\Huge\thechapter \hspace{0.5em}- }{0pt}{\Huge}
 \titlespacing*{\chapter}{0pt}{0pt}{20pt}
 
 % header and footer settings
